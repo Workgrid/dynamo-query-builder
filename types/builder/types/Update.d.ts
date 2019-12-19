@@ -1,9 +1,9 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
     /** Setters */
-    addUpdateExpression: (type: import("../attributes/UpdateExpression").ExpressionType, keyName: string, value?: any) => typeof globalThis;
-    addConditionExpression: (key: string, value: any, operator?: string) => typeof globalThis;
-    addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
+    addUpdateExpression: (type: import("../attributes/UpdateExpression").ExpressionType, keyName: string, value?: any) => this;
+    addConditionExpression: (key: string, value: any, operator?: string) => this;
+    addAliasToKey: (keyName: string, aliasName: string) => this;
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {
         ExpressionAttributeNames: {

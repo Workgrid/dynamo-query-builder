@@ -1,9 +1,9 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
     /** Expose public functions */
-    setKeyCondition: (key: string, value: any) => typeof globalThis;
-    addKeyProjection: (key: string) => typeof globalThis;
-    addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
+    setKeyCondition: (key: string, value: any) => this;
+    addKeyProjection: (key: string) => this;
+    addAliasToKey: (keyName: string, aliasName: string) => this;
     /** Public utility function */
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {

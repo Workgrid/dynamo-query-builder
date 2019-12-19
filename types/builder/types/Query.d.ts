@@ -1,10 +1,10 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
     /** Setters */
-    addKeyCondition: (key: string, value: any, operator?: string) => any;
-    addKeyProjection: (key: string) => typeof globalThis;
-    addFilterExpression: (key: string, value: any, operator?: string) => any;
-    addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
+    addKeyCondition: (key: string, value: any, operator?: string) => this;
+    addKeyProjection: (key: string) => this;
+    addFilterExpression: (key: string, value: any, operator?: string) => this;
+    addAliasToKey: (keyName: string, aliasName: string) => this;
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {
         FilterExpression: string;

@@ -1,9 +1,9 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
-    setItem: (itemObject: import("../attributes/Item").IJsonItem) => typeof globalThis;
-    addCondition: (key: string, value: any, operator?: string) => typeof globalThis;
-    addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
-    generateAliasForKey: (keyName: string) => string;
+    setItem: (itemObject: import("../attributes/Item").IJsonItem) => this;
+    addCondition: (key: string, value: any, operator?: string) => this;
+    addAliasToKey: (keyName: string, aliasName: string) => this;
+    generateAliasForKey: (keyName: string) => this;
     getConstructedQuery(): {
         ExpressionAttributeNames: {
             [key: string]: any;

@@ -1,11 +1,11 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
     /** Setters */
-    addKeyProjection: (key: string) => typeof globalThis;
-    addFilterExpression: (key: string, value: any, operator?: string) => any;
-    addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
-    setIndexName: (indexName: string) => typeof globalThis;
-    setLimit: (num: number) => any;
+    addKeyProjection: (key: string) => this;
+    addFilterExpression: (key: string, value: any, operator?: string) => this;
+    addAliasToKey: (keyName: string, aliasName: string) => this;
+    setIndexName: (indexName: string) => this;
+    setLimit: (num: number) => this;
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {
         Limit: number;
