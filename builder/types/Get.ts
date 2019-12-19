@@ -1,4 +1,5 @@
 import QueryBuilder from '../'
+import { chainable } from '../../utils'
 
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import Key from '../attributes/Key'
@@ -12,9 +13,9 @@ const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionA
 export default class extends QueryBuilder {
 
   /** Expose public functions */
-  public setKeyCondition = setKey
-  public addKeyProjection = addProjection
-  public addAliasToKey = addAttrName
+  public setKeyCondition = chainable(setKey, this)
+  public addKeyProjection = chainable(addProjection, this)
+  public addAliasToKey = chainable(addAttrName, this)
 
   /** Public utility function */
   public generateAliasForKey = generateAliasForKey

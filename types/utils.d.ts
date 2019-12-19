@@ -5,3 +5,4 @@ export declare const formatValue: (builderType: BuilderType, value: any) => any;
 export declare const getType: (variable: any) => "BOOL" | "S" | "N" | "B";
 /** Simple way to check if the object is empty */
 export declare const isEmpty: (object: object) => boolean;
+export declare const chainable: <T extends any[], U>(fn: (...args: T) => any, weeSomething: U) => (...args: T) => U;

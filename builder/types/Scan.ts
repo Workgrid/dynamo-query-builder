@@ -1,4 +1,5 @@
 import QueryBuilder from '../'
+import { chainable } from '../../utils'
 
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
@@ -20,11 +21,11 @@ const { get: getLimit, set: setLimit } = Limit()
 export default class extends QueryBuilder {
 
   /** Setters */
-  public addKeyProjection = addProjection
-  public addFilterExpression = addFilterExp
-  public addAliasToKey = addAttrName
-  public setIndexName = setIndexName
-  public setLimit = setLimit
+  public addKeyProjection = chainable(addProjection, this)
+  public addFilterExpression = chainable(addFilterExp, this)
+  public addAliasToKey = chainable(addAttrName, this)
+  public setIndexName = chainable(setIndexName, this)
+  public setLimit = chainable(setLimit, this)
 
   public generateAliasForKey = generateAliasForKey
 

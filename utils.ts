@@ -7,8 +7,9 @@ export const formatValue = (builderType: BuilderType, value: any) => {
     case BuilderType.DynamoDB:
       const type = getType(value)
       return { [type]: value }
+    case BuilderType.DocumentClient: // DocumentClient is already good to go, fallthrough
     default:
-      return value // DocumentClient is already good to go
+      return value
   }
 }
 
@@ -31,7 +32,8 @@ export const isEmpty = (object: object) => {
   return (Object.keys(object).length === 0)
 }
 
-export const chainable = <T extends any[], U>(fn: (...args: T) => any, weeSomething: U) => {
+/** Create a chainable function out of a void function */
+export const chainable = <T extends any[], U>(fn: (...args: T) => void, weeSomething: U) => {
   return (...args: T): U => {
     fn(...args)
     return weeSomething

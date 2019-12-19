@@ -1,4 +1,5 @@
 import QueryBuilder from '../'
+import { chainable } from '../../utils'
 
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
@@ -18,10 +19,10 @@ const { get: getFilterExp, add: addFilterExp } = FilterExpression(expressionAttr
 export default class extends QueryBuilder {
 
   /** Setters */
-  public addKeyCondition = addKeyCondition
-  public addKeyProjection = addProjection
-  public addFilterExpression = addFilterExp
-  public addAliasToKey = addAttrName
+  public addKeyCondition = chainable(addKeyCondition, this)
+  public addKeyProjection = chainable(addProjection, this)
+  public addFilterExpression = chainable(addFilterExp, this)
+  public addAliasToKey = chainable(addAttrName, this)
 
   public generateAliasForKey = generateAliasForKey
 

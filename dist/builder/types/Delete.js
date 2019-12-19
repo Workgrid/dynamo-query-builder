@@ -28,6 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var __1 = __importDefault(require("../"));
+var utils_1 = require("../../utils");
 var ConditionExpression_1 = __importDefault(require("../attributes/ConditionExpression"));
 var ExpressionAttributeNames_1 = __importDefault(require("../attributes/ExpressionAttributeNames"));
 var ExpressionAttributeValues_1 = __importDefault(require("../attributes/ExpressionAttributeValues"));
@@ -46,11 +47,11 @@ var default_1 = /** @class */ (function (_super) {
     function default_1() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         /** Setters */
-        _this.setKeyCondition = function (key, val) { setKey(key, val); return _this; };
-        _this.addKeyProjection = addProjection;
-        _this.addConditionExpression = addConditionExp;
-        _this.addExpressionAttrValue = addAttrValue;
-        _this.addAliasToKey = addAttrName;
+        _this.setKeyCondition = utils_1.chainable(setKey, _this);
+        _this.addKeyProjection = utils_1.chainable(addProjection, _this);
+        _this.addConditionExpression = utils_1.chainable(addConditionExp, _this);
+        _this.addExpressionAttrValue = utils_1.chainable(addAttrValue, _this);
+        _this.addAliasToKey = utils_1.chainable(addAttrName, _this);
         /** Public utility function */
         _this.generateAliasForKey = generateAliasForKey;
         return _this;

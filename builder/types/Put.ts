@@ -1,4 +1,5 @@
 import QueryBuilder from '../'
+import { chainable } from '../../utils'
 
 import ConditionExpression from '../attributes/ConditionExpression'
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
@@ -16,10 +17,10 @@ const { get: getConditionExp, add: addConditionExp } = ConditionExpression(expre
 export default class extends QueryBuilder {
 
   // Exposed function renaming
-  public setItem = setItem
-  public addCondition = addConditionExp
-  public addAliasToKey = addAttrName
-  public generateAliasForKey = generateAliasForKey
+  public setItem = chainable(setItem, this)
+  public addCondition = chainable(addConditionExp, this)
+  public addAliasToKey = chainable(addAttrName, this)
+  public generateAliasForKey = chainable(generateAliasForKey, this)
 
   public getConstructedQuery() {
     const query = super.getConstructedQuery()
