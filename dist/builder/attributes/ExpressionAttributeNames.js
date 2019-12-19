@@ -1,12 +1,13 @@
 "use strict";
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("../../utils");
-exports.default = (function (baseClass) {
+exports.default = (function () {
     var ExpressionAttributeNames = {};
     return {
         add: function (keyName, aliasName) {
             ExpressionAttributeNames[aliasName] = keyName;
-            return baseClass;
+            return _this;
         },
         get: function () {
             if (!utils_1.isEmpty(ExpressionAttributeNames)) {

@@ -5,9 +5,9 @@ import Key from '../attributes/Key'
 import ProjectionExpression from '../attributes/ProjectionExpression'
 
 /** Attribute modules */
-const { get: getKey, set: setKey } = Key(this)
-const { get: getProjection, add: addProjection } = ProjectionExpression(this)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames(this)
+const { get: getKey, set: setKey } = Key()
+const { get: getProjection, add: addProjection } = ProjectionExpression()
+const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
 
 export default class extends QueryBuilder {
 

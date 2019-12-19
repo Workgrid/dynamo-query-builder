@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass) {
+exports.default = (function () {
     var Limit;
     return {
         set: function (num) {
             Limit = num;
-            return baseClass;
+            return this;
         },
         get: function () {
             if (Limit) {

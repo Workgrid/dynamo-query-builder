@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass, exprAttrValues) {
+exports.default = (function (exprAttrValues) {
     var FilterExpression = [];
     return {
         add: function (key, value, operator) {
@@ -8,7 +8,7 @@ exports.default = (function (baseClass, exprAttrValues) {
             var filterIndex = ":" + (FilterExpression.length + 1);
             FilterExpression.push(key + " " + op + " " + filterIndex);
             exprAttrValues.add(filterIndex, value);
-            return baseClass;
+            return this;
         },
         get: function () {
             if (FilterExpression.length !== 0) {

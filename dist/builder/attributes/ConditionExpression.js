@@ -1,6 +1,7 @@
 "use strict";
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass, exprAttrValues) {
+exports.default = (function (exprAttrValues) {
     var ConditionExpression = [];
     return {
         add: function (key, value, operator) {
@@ -8,7 +9,7 @@ exports.default = (function (baseClass, exprAttrValues) {
             var queryIndex = ":" + (ConditionExpression.length + 1);
             ConditionExpression.push(key + " " + op + " " + queryIndex);
             exprAttrValues.add(queryIndex, value);
-            return baseClass;
+            return _this;
         },
         get: function () {
             if (ConditionExpression.length > 0) {

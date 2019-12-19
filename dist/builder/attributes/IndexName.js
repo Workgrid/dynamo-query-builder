@@ -1,6 +1,7 @@
 "use strict";
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass) {
+exports.default = (function () {
     var IndexName;
     return {
         get: function () {
@@ -8,7 +9,7 @@ exports.default = (function (baseClass) {
         },
         set: function (indexName) {
             IndexName = indexName;
-            return baseClass;
+            return _this;
         }
     };
 });

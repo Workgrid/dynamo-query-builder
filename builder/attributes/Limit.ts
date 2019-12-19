@@ -1,9 +1,9 @@
-export default <T extends any>(baseClass: T) => {
+export default () => {
   let Limit: number
   return {
     set(num: number) {
       Limit = num
-      return baseClass
+      return this
     },
 
     get: () => {

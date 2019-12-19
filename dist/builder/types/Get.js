@@ -32,9 +32,9 @@ var ExpressionAttributeNames_1 = __importDefault(require("../attributes/Expressi
 var Key_1 = __importDefault(require("../attributes/Key"));
 var ProjectionExpression_1 = __importDefault(require("../attributes/ProjectionExpression"));
 /** Attribute modules */
-var _a = Key_1.default(this), getKey = _a.get, setKey = _a.set;
-var _b = ProjectionExpression_1.default(this), getProjection = _b.get, addProjection = _b.add;
-var _c = ExpressionAttributeNames_1.default(this), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
+var _a = Key_1.default(), getKey = _a.get, setKey = _a.set;
+var _b = ProjectionExpression_1.default(), getProjection = _b.get, addProjection = _b.add;
+var _c = ExpressionAttributeNames_1.default(), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {

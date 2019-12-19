@@ -34,19 +34,19 @@ var ExpressionAttributeValues_1 = __importDefault(require("../attributes/Express
 var Key_1 = __importDefault(require("../attributes/Key"));
 var ProjectionExpression_1 = __importDefault(require("../attributes/ProjectionExpression"));
 // Shared attribute
-var expressionAttributeValues = ExpressionAttributeValues_1.default(this);
+var expressionAttributeValues = ExpressionAttributeValues_1.default();
 // Destructuring attributes
 var getAttrValues = expressionAttributeValues.get, addAttrValue = expressionAttributeValues.add;
-var _a = Key_1.default(this), getKey = _a.get, setKey = _a.set;
-var _b = ProjectionExpression_1.default(this), getProjection = _b.get, addProjection = _b.add;
-var _c = ExpressionAttributeNames_1.default(this), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
-var _d = ConditionExpression_1.default(this, expressionAttributeValues), getConditionExp = _d.get, addConditionExp = _d.add;
+var _a = Key_1.default(), getKey = _a.get, setKey = _a.set;
+var _b = ProjectionExpression_1.default(), getProjection = _b.get, addProjection = _b.add;
+var _c = ExpressionAttributeNames_1.default(), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
+var _d = ConditionExpression_1.default(expressionAttributeValues), getConditionExp = _d.get, addConditionExp = _d.add;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         /** Setters */
-        _this.setKeyCondition = setKey;
+        _this.setKeyCondition = function (key, val) { setKey(key, val); return _this; };
         _this.addKeyProjection = addProjection;
         _this.addConditionExpression = addConditionExp;
         _this.addExpressionAttrValue = addAttrValue;

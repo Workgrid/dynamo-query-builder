@@ -7,13 +7,13 @@ import KeyConditionExpression from '../attributes/KeyConditionExpression'
 import ProjectionExpression from '../attributes/ProjectionExpression'
 
 /** Attribute modules */
-const expressionAttributeValues = ExpressionAttributeValues(this)
+const expressionAttributeValues = ExpressionAttributeValues()
 const { get: getAttrValues } = expressionAttributeValues
 
-const { get: getProjection, add: addProjection } = ProjectionExpression(this)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames(this)
-const { get: getKeyCondition, add: addKeyCondition } = KeyConditionExpression(this, expressionAttributeValues)
-const { get: getFilterExp, add: addFilterExp } = FilterExpression(this, expressionAttributeValues)
+const { get: getProjection, add: addProjection } = ProjectionExpression()
+const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
+const { get: getKeyCondition, add: addKeyCondition } = KeyConditionExpression(expressionAttributeValues)
+const { get: getFilterExp, add: addFilterExp } = FilterExpression(expressionAttributeValues)
 
 export default class extends QueryBuilder {
 

@@ -33,11 +33,11 @@ var ExpressionAttributeNames_1 = __importDefault(require("../attributes/Expressi
 var ExpressionAttributeValues_1 = __importDefault(require("../attributes/ExpressionAttributeValues"));
 var Item_1 = __importDefault(require("../attributes/Item"));
 // Shared attribute
-var expressionAttributeValues = ExpressionAttributeValues_1.default(this);
+var expressionAttributeValues = ExpressionAttributeValues_1.default();
 var getAttrValues = expressionAttributeValues.get;
-var _a = Item_1.default(this), getItem = _a.get, setItem = _a.set;
-var _b = ExpressionAttributeNames_1.default(this), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
-var _c = ConditionExpression_1.default(this, expressionAttributeValues), getConditionExp = _c.get, addConditionExp = _c.add;
+var _a = Item_1.default(), getItem = _a.get, setItem = _a.set;
+var _b = ExpressionAttributeNames_1.default(), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
+var _c = ConditionExpression_1.default(expressionAttributeValues), getConditionExp = _c.get, addConditionExp = _c.add;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {

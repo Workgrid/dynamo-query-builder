@@ -1,5 +1,5 @@
-declare const _default: <T extends any>(baseClass: T) => {
-    set(num: number): T;
+declare const _default: () => {
+    set(num: number): any;
     get: () => {
         Limit: number;
     } | {

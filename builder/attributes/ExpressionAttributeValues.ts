@@ -1,20 +1,29 @@
-import { formatValue, isEmpty } from '../../utils'
+import { getBuilderType } from '..'
+import { formatValue } from '../../utils'
 
-export default <T extends any>(baseClass: T) => {
-  const ExpressionAttributeValues: { [key: string]: any } = {}
+interface IAttributeValue {
+  keyName: string,
+  value: any
+}
+
+export default () => {
+  const ExpressionAttributeValues: IAttributeValue[] = []
 
   return {
-    add: (keyName: string, value: any): T => {
-      console.log(baseClass)
-      const formattedValue = formatValue(baseClass.builderType, value)
-      ExpressionAttributeValues[keyName] = formattedValue
-      return baseClass
+    add: (keyName: string, value: any) => {
+      ExpressionAttributeValues.push({ keyName, value })
     },
 
     get: () => {
-      if (!isEmpty(ExpressionAttributeValues)) {
+      if (ExpressionAttributeValues.length > 0) {
+        const formattedObject: { [key: string]: string } = {}
+        for (const exp of ExpressionAttributeValues) {
+          const formattedValue = formatValue(getBuilderType(), exp.value)
+          formattedObject[exp.keyName] = formattedValue
+        }
+
         return {
-          ExpressionAttributeValues
+          ExpressionAttributeValues: formattedObject
         }
       }
       return {}

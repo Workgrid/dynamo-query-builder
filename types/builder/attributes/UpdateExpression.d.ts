@@ -1,15 +1,15 @@
 export declare type ExpressionType = 'ADD' | 'DELETE' | 'REMOVE' | 'SET';
-declare const _default: <T extends any>(baseClass: T, exprAttrValues: {
-    add: (keyName: string, value: any) => any;
+declare const _default: (exprAttrValues: {
+    add: (keyName: string, value: any) => void;
     get: () => {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
     } | {
         ExpressionAttributeValues?: undefined;
     };
 }) => {
-    add: (type: ExpressionType, keyName: string, value?: any) => T;
+    add: (type: ExpressionType, keyName: string, value?: any) => typeof globalThis;
     get: () => {
         UpdateExpression: string;
     } | {

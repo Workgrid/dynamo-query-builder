@@ -6,12 +6,12 @@ import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
 import Item from '../attributes/Item'
 
 // Shared attribute
-const expressionAttributeValues = ExpressionAttributeValues(this)
+const expressionAttributeValues = ExpressionAttributeValues()
 const { get: getAttrValues } = expressionAttributeValues
 
-const { get: getItem, set: setItem } = Item(this)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey} = ExpressionAttributeNames(this)
-const { get: getConditionExp, add: addConditionExp } = ConditionExpression(this, expressionAttributeValues)
+const { get: getItem, set: setItem } = Item()
+const { get: getAttrNames, add: addAttrName, generateAliasForKey} = ExpressionAttributeNames()
+const { get: getConditionExp, add: addConditionExp } = ConditionExpression(expressionAttributeValues)
 
 export default class extends QueryBuilder {
 

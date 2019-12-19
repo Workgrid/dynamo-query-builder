@@ -9,22 +9,18 @@ export default class extends QueryBuilder {
             [key: string]: any;
         };
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames?: undefined;
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames: {
@@ -32,39 +28,31 @@ export default class extends QueryBuilder {
         };
         ExpressionAttributeValues?: undefined;
         ConditionExpression: string;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames?: undefined;
         ExpressionAttributeValues?: undefined;
         ConditionExpression: string;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames?: undefined;
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames: {
@@ -72,17 +60,13 @@ export default class extends QueryBuilder {
         };
         ExpressionAttributeValues?: undefined;
         ConditionExpression?: undefined;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     } | {
         ExpressionAttributeNames?: undefined;
         ExpressionAttributeValues?: undefined;
         ConditionExpression?: undefined;
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
         TableName: string;
     };
 }

@@ -1,11 +1,12 @@
 "use strict";
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass) {
+exports.default = (function () {
     var ProjectionExpression = [];
     return {
         add: function (key) {
             ProjectionExpression.push(key);
-            return baseClass;
+            return _this;
         },
         get: function () {
             if (ProjectionExpression.length > 0) {

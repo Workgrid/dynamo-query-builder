@@ -34,12 +34,12 @@ var FilterExpression_1 = __importDefault(require("../attributes/FilterExpression
 var KeyConditionExpression_1 = __importDefault(require("../attributes/KeyConditionExpression"));
 var ProjectionExpression_1 = __importDefault(require("../attributes/ProjectionExpression"));
 /** Attribute modules */
-var expressionAttributeValues = ExpressionAttributeValues_1.default(this);
+var expressionAttributeValues = ExpressionAttributeValues_1.default();
 var getAttrValues = expressionAttributeValues.get;
-var _a = ProjectionExpression_1.default(this), getProjection = _a.get, addProjection = _a.add;
-var _b = ExpressionAttributeNames_1.default(this), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
-var _c = KeyConditionExpression_1.default(this, expressionAttributeValues), getKeyCondition = _c.get, addKeyCondition = _c.add;
-var _d = FilterExpression_1.default(this, expressionAttributeValues), getFilterExp = _d.get, addFilterExp = _d.add;
+var _a = ProjectionExpression_1.default(), getProjection = _a.get, addProjection = _a.add;
+var _b = ExpressionAttributeNames_1.default(), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
+var _c = KeyConditionExpression_1.default(expressionAttributeValues), getKeyCondition = _c.get, addKeyCondition = _c.add;
+var _d = FilterExpression_1.default(expressionAttributeValues), getFilterExp = _d.get, addFilterExp = _d.add;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {

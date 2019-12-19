@@ -5,12 +5,12 @@ import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
 import UpdateExpression from '../attributes/UpdateExpression'
 
-const expressionAttributeValues = ExpressionAttributeValues(this)
+const expressionAttributeValues = ExpressionAttributeValues()
 const { get: getAttrValues } = expressionAttributeValues
 
-const { get: getUpdateExp, add: addUpdateExpression } = UpdateExpression(this, expressionAttributeValues)
-const { get: getConditionExp, add: addConditionExp } = ConditionExpression(this, expressionAttributeValues)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames(this)
+const { get: getUpdateExp, add: addUpdateExpression } = UpdateExpression(expressionAttributeValues)
+const { get: getConditionExp, add: addConditionExp } = ConditionExpression(expressionAttributeValues)
+const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
 
 export default class extends QueryBuilder {
 

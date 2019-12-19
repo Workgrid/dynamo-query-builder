@@ -1,8 +1,8 @@
-declare const _default: <T extends any>(baseClass: T) => {
-    add: (keyName: string, value: any) => T;
+declare const _default: () => {
+    add: (keyName: string, value: any) => void;
     get: () => {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
     } | {
         ExpressionAttributeValues?: undefined;

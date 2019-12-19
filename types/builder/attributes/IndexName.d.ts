@@ -1,7 +1,7 @@
-declare const _default: <T extends any>(baseClass: T) => {
+declare const _default: () => {
     get: () => {
         IndexName: string;
     };
-    set: (indexName: string) => T;
+    set: (indexName: string) => typeof globalThis;
 };
 export default _default;

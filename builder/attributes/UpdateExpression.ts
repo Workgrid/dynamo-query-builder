@@ -4,7 +4,7 @@ export type ExpressionType = 'ADD' | 'DELETE' | 'REMOVE' | 'SET'
 
 interface ITransaction { keyName: string, value?: any }
 
-export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
+export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
 
   const adds: ITransaction[] = []
   const deletes: ITransaction[] = []
@@ -12,7 +12,7 @@ export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof E
   const sets: ITransaction[] = []
 
   return {
-    add: (type: ExpressionType, keyName: string, value?: any): T => {
+    add: (type: ExpressionType, keyName: string, value?: any) => {
       const newTransaction: ITransaction = { keyName, value }
 
       switch (type) {
@@ -30,7 +30,7 @@ export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof E
           break
       }
 
-      return baseClass
+      return this
     },
 
     // Looking to clean this up, but the slight differences between the expressions make it difficult

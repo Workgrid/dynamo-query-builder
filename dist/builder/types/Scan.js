@@ -35,13 +35,13 @@ var IndexName_1 = __importDefault(require("../attributes/IndexName"));
 var Limit_1 = __importDefault(require("../attributes/Limit"));
 var ProjectionExpression_1 = __importDefault(require("../attributes/ProjectionExpression"));
 /** Attribute modules */
-var expressionAttributeValues = ExpressionAttributeValues_1.default(this);
+var expressionAttributeValues = ExpressionAttributeValues_1.default();
 var getAttrValues = expressionAttributeValues.get;
-var _a = ProjectionExpression_1.default(this), getProjection = _a.get, addProjection = _a.add;
-var _b = ExpressionAttributeNames_1.default(this), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
-var _c = FilterExpression_1.default(this, expressionAttributeValues), getFilterExp = _c.get, addFilterExp = _c.add;
-var _d = IndexName_1.default(this), getIndexName = _d.get, setIndexName = _d.set;
-var _e = Limit_1.default(this), getLimit = _e.get, setLimit = _e.set;
+var _a = ProjectionExpression_1.default(), getProjection = _a.get, addProjection = _a.add;
+var _b = ExpressionAttributeNames_1.default(), getAttrNames = _b.get, addAttrName = _b.add, generateAliasForKey = _b.generateAliasForKey;
+var _c = FilterExpression_1.default(expressionAttributeValues), getFilterExp = _c.get, addFilterExp = _c.add;
+var _d = IndexName_1.default(), getIndexName = _d.get, setIndexName = _d.set;
+var _e = Limit_1.default(), getLimit = _e.get, setLimit = _e.set;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {

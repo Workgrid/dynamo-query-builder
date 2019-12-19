@@ -1,5 +1,5 @@
-declare const _default: <T extends any>(baseClass: T) => {
-    add: (key: string) => T;
+declare const _default: () => {
+    add: (key: string) => typeof globalThis;
     get: () => {
         ProjectionExpression: string;
     } | {

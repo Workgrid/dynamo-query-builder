@@ -1,12 +1,12 @@
-export default <T extends any>(baseClass: T) => {
+export default () => {
   let IndexName: string
   return {
     get: () => {
       return { IndexName }
     },
-    set: (indexName: string): T => {
+    set: (indexName: string) => {
       IndexName = indexName
-      return baseClass
+      return this
     }
   }
 }

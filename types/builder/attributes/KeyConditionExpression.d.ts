@@ -1,14 +1,14 @@
-declare const _default: <T extends any>(baseClass: T, exprAttrValues: {
-    add: (keyName: string, value: any) => any;
+declare const _default: (exprAttrValues: {
+    add: (keyName: string, value: any) => void;
     get: () => {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
     } | {
         ExpressionAttributeValues?: undefined;
     };
 }) => {
-    add(key: string, value: any, operator?: string): T;
+    add(key: string, value: any, operator?: string): any;
     get: () => {
         KeyConditionExpression: string;
     } | {

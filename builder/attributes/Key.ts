@@ -1,6 +1,6 @@
 import { isEmpty } from '../../utils'
 
-export default <T extends any>(baseClass: T) => {
+export default () => {
   const Key: { [key: string]: any } = {}
 
   return {
@@ -10,9 +10,9 @@ export default <T extends any>(baseClass: T) => {
       }
       return {}
     },
-    set: (key: string, value: any): T => {
+    set: (key: string, value: any) => {
       Key[key] = value
-      return baseClass
+      return this
     }
   }
 }

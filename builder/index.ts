@@ -2,17 +2,22 @@ export enum BuilderType {
   DocumentClient, DynamoDB
 }
 
+let queryBuilderType: BuilderType
+export const getBuilderType = () => {
+  return queryBuilderType || BuilderType.DocumentClient
+}
+
 /**
  * DynamoDB DocumentClient query builder helper class
  */
-
 class QueryBuilder {
-  protected builderType: BuilderType // TODO: ExpressionValues need to change
   protected tableName: string
 
   constructor(tableName: string, builderType?: BuilderType) {
-    console.log(builderType)
-    this.builderType = (typeof builderType !== 'undefined') ? builderType : BuilderType.DocumentClient
+    if (typeof builderType !== 'undefined') {
+      queryBuilderType = builderType
+    }
+
     this.tableName = tableName
   }
 

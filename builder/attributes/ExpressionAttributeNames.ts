@@ -1,12 +1,12 @@
 import { isEmpty } from '../../utils'
 
-export default <T extends any>(baseClass: T) => {
+export default () => {
   const ExpressionAttributeNames: { [key: string]: any } = {}
 
   return {
-    add: (keyName: string, aliasName: string): T => {
+    add: (keyName: string, aliasName: string) => {
       ExpressionAttributeNames[aliasName] = keyName
-      return baseClass
+      return this
     },
 
     get: () => {

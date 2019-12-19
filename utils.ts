@@ -30,3 +30,10 @@ export const getType = (variable: any) => {
 export const isEmpty = (object: object) => {
   return (Object.keys(object).length === 0)
 }
+
+export const chainable = <T extends any[], U>(fn: (...args: T) => any, weeSomething: U) => {
+  return (...args: T): U => {
+    fn(...args)
+    return weeSomething
+  }
+}

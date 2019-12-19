@@ -1,6 +1,7 @@
 "use strict";
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (baseClass, exprAttrValues) {
+exports.default = (function (exprAttrValues) {
     var adds = [];
     var deletes = [];
     var removes = [];
@@ -22,7 +23,7 @@ exports.default = (function (baseClass, exprAttrValues) {
                     sets.push(newTransaction);
                     break;
             }
-            return baseClass;
+            return _this;
         },
         // Looking to clean this up, but the slight differences between the expressions make it difficult
         get: function () {

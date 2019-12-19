@@ -1,6 +1,6 @@
 import ExpressionAttributeValues from './ExpressionAttributeValues'
 
-export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
+export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
   const KeyConditionExpression: string[] = []
 
   return {
@@ -11,7 +11,7 @@ export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof E
       KeyConditionExpression.push(`${key} ${op} ${queryIndex}`)
       exprAttrValues.add(queryIndex, value)
 
-      return baseClass
+      return this
     },
 
     get: () => {

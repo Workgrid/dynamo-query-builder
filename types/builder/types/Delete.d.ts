@@ -1,16 +1,16 @@
 import QueryBuilder from '../';
 export default class extends QueryBuilder {
     /** Setters */
-    setKeyCondition: (key: string, value: any) => typeof globalThis;
+    setKeyCondition: (key: any, val: any) => this;
     addKeyProjection: (key: string) => typeof globalThis;
     addConditionExpression: (key: string, value: any, operator?: string) => typeof globalThis;
-    addExpressionAttrValue: (keyName: string, value: any) => typeof globalThis;
+    addExpressionAttrValue: (keyName: string, value: any) => void;
     addAliasToKey: (keyName: string, aliasName: string) => typeof globalThis;
     /** Public utility function */
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames: {
@@ -34,7 +34,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames: {
@@ -58,7 +58,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames?: undefined;
@@ -78,7 +78,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames?: undefined;
@@ -98,7 +98,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames: {
@@ -122,7 +122,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames: {
@@ -146,7 +146,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames?: undefined;
@@ -166,7 +166,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames?: undefined;
@@ -186,7 +186,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames: {
@@ -206,7 +206,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames: {
@@ -226,7 +226,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames?: undefined;
@@ -242,7 +242,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames?: undefined;
@@ -258,7 +258,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames: {
@@ -278,7 +278,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames: {
@@ -298,7 +298,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression: string;
         ExpressionAttributeNames?: undefined;
@@ -314,7 +314,7 @@ export default class extends QueryBuilder {
         TableName: string;
     } | {
         ExpressionAttributeValues: {
-            [key: string]: any;
+            [key: string]: string;
         };
         ConditionExpression?: undefined;
         ExpressionAttributeNames?: undefined;

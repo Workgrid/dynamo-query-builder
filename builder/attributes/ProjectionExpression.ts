@@ -1,10 +1,10 @@
-export default <T extends any>(baseClass: T) => {
+export default () => {
   const ProjectionExpression: string[] = []
 
   return {
-    add: (key: string): T => {
+    add: (key: string) => {
       ProjectionExpression.push(key)
-      return baseClass
+      return this
     },
     get: () => {
       if (ProjectionExpression.length > 0) {

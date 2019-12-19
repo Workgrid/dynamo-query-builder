@@ -1,5 +1,5 @@
-declare const _default: <T extends any>(baseClass: T) => {
-    add: (keyName: string, aliasName: string) => T;
+declare const _default: () => {
+    add: (keyName: string, aliasName: string) => typeof globalThis;
     get: () => {
         ExpressionAttributeNames: {
             [key: string]: any;

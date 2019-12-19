@@ -1,4 +1,4 @@
-declare const _default: <T extends any>(baseClass: T) => {
+declare const _default: () => {
     get: () => {
         Key: {
             [key: string]: any;
@@ -6,6 +6,6 @@ declare const _default: <T extends any>(baseClass: T) => {
     } | {
         Key?: undefined;
     };
-    set: (key: string, value: any) => T;
+    set: (key: string, value: any) => typeof globalThis;
 };
 export default _default;

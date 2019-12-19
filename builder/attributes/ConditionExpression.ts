@@ -1,17 +1,17 @@
 import ExpressionAttributeValues from './ExpressionAttributeValues'
 
-export default <T extends any>(baseClass: T, exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
+export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
   const ConditionExpression: string[] = []
 
   return {
-    add: (key: string, value: any, operator?: string): T => {
+    add: (key: string, value: any, operator?: string) => {
       const op = operator || '='
       const queryIndex = `:${ConditionExpression.length + 1}`
 
       ConditionExpression.push(`${key} ${op} ${queryIndex}`)
       exprAttrValues.add(queryIndex, value)
 
-      return baseClass
+      return this
     },
     get: () => {
       if (ConditionExpression.length > 0) {

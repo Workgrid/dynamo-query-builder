@@ -8,14 +8,14 @@ import Limit from '../attributes/Limit'
 import ProjectionExpression from '../attributes/ProjectionExpression'
 
 /** Attribute modules */
-const expressionAttributeValues = ExpressionAttributeValues(this)
+const expressionAttributeValues = ExpressionAttributeValues()
 const { get: getAttrValues } = expressionAttributeValues
 
-const { get: getProjection, add: addProjection } = ProjectionExpression(this)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames(this)
-const { get: getFilterExp, add: addFilterExp } = FilterExpression(this, expressionAttributeValues)
-const { get: getIndexName, set: setIndexName } = IndexName(this)
-const { get: getLimit, set: setLimit } = Limit(this)
+const { get: getProjection, add: addProjection } = ProjectionExpression()
+const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
+const { get: getFilterExp, add: addFilterExp } = FilterExpression(expressionAttributeValues)
+const { get: getIndexName, set: setIndexName } = IndexName()
+const { get: getLimit, set: setLimit } = Limit()
 
 export default class extends QueryBuilder {
 

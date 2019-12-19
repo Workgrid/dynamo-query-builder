@@ -32,11 +32,11 @@ var ConditionExpression_1 = __importDefault(require("../attributes/ConditionExpr
 var ExpressionAttributeNames_1 = __importDefault(require("../attributes/ExpressionAttributeNames"));
 var ExpressionAttributeValues_1 = __importDefault(require("../attributes/ExpressionAttributeValues"));
 var UpdateExpression_1 = __importDefault(require("../attributes/UpdateExpression"));
-var expressionAttributeValues = ExpressionAttributeValues_1.default(this);
+var expressionAttributeValues = ExpressionAttributeValues_1.default();
 var getAttrValues = expressionAttributeValues.get;
-var _a = UpdateExpression_1.default(this, expressionAttributeValues), getUpdateExp = _a.get, addUpdateExpression = _a.add;
-var _b = ConditionExpression_1.default(this, expressionAttributeValues), getConditionExp = _b.get, addConditionExp = _b.add;
-var _c = ExpressionAttributeNames_1.default(this), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
+var _a = UpdateExpression_1.default(expressionAttributeValues), getUpdateExp = _a.get, addUpdateExpression = _a.add;
+var _b = ConditionExpression_1.default(expressionAttributeValues), getConditionExp = _b.get, addConditionExp = _b.add;
+var _c = ExpressionAttributeNames_1.default(), getAttrNames = _c.get, addAttrName = _c.add, generateAliasForKey = _c.generateAliasForKey;
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {

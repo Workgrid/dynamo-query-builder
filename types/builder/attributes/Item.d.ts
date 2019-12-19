@@ -1,12 +1,10 @@
 export interface IJsonItem {
     [key: string]: any;
 }
-declare const _default: <T extends any>(baseClass: T) => {
+declare const _default: () => {
     get: () => {
-        Item: {
-            [key: string]: any;
-        };
+        Item: {};
     };
-    set: (itemObject: IJsonItem) => T;
+    set: (itemObject: IJsonItem) => typeof globalThis;
 };
 export default _default;
