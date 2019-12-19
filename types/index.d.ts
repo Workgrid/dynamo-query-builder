@@ -1,0 +1,13 @@
+import Delete from './builder/types/Delete';
+import Get from './builder/types/Get';
+import Put from './builder/types/Put';
+import Query from './builder/types/Query';
+import Scan from './builder/types/Scan';
+import Update from './builder/types/Update';
+export declare const ConstructGet: typeof Get;
+export declare const ConstructDelete: typeof Delete;
+export declare const ConstructPut: typeof Put;
+export declare const ConstructQuery: typeof Query;
+export declare const ConstructScan: typeof Scan;
+export declare const ConstructUpdate: typeof Update;
+export { BuilderType } from './builder';

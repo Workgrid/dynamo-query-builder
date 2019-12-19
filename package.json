@@ -1,0 +1,15 @@
+{
+  "name": "workgrid-dynamo-query-builder",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^12.12.20",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
+}
