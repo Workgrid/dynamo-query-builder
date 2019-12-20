@@ -1,4 +1,4 @@
-import QueryBuilder from '../';
+import QueryBuilder from '..';
 export default class extends QueryBuilder {
     setItem: (itemObject: import("../attributes/Item").IJsonItem) => this;
     addCondition: (key: string, value: any, operator?: string) => this;

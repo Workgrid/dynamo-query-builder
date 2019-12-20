@@ -1,9 +1,9 @@
-import Delete from './builder/types/Delete';
-import Get from './builder/types/Get';
-import Put from './builder/types/Put';
-import Query from './builder/types/Query';
-import Scan from './builder/types/Scan';
-import Update from './builder/types/Update';
+import Delete from './builder/operations/Delete';
+import Get from './builder/operations/Get';
+import Put from './builder/operations/Put';
+import Query from './builder/operations/Query';
+import Scan from './builder/operations/Scan';
+import Update from './builder/operations/Update';
 export declare const ConstructGet: typeof Get;
 export declare const ConstructDelete: typeof Delete;
 export declare const ConstructPut: typeof Put;

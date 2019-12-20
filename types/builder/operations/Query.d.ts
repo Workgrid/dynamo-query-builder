@@ -1,4 +1,4 @@
-import QueryBuilder from '../';
+import QueryBuilder from '..';
 export default class extends QueryBuilder {
     /** Setters */
     addKeyCondition: (key: string, value: any, operator?: string) => this;

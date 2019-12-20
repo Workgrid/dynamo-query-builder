@@ -1,332 +1,331 @@
-import QueryBuilder from '../';
+import QueryBuilder from '..';
 export default class extends QueryBuilder {
     /** Setters */
-    setKeyCondition: (key: string, value: any) => this;
     addKeyProjection: (key: string) => this;
-    addConditionExpression: (key: string, value: any, operator?: string) => this;
-    addExpressionAttrValue: (keyName: string, value: any) => this;
+    addFilterExpression: (key: string, value: any, operator?: string) => this;
     addAliasToKey: (keyName: string, aliasName: string) => this;
-    /** Public utility function */
+    setIndexName: (indexName: string) => this;
+    setLimit: (num: number) => this;
     generateAliasForKey: (keyName: string) => string;
     getConstructedQuery(): {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression: string;
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
+        ExpressionAttributeValues: {
+            [key: string]: string;
         };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression?: undefined;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
+        ExpressionAttributeValues: {
+            [key: string]: string;
         };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression?: undefined;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression: string;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression: string;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues: {
+            [key: string]: string;
+        };
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues: {
+            [key: string]: string;
+        };
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
+        ExpressionAttributeValues: {
+            [key: string]: string;
         };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression?: undefined;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
+        ExpressionAttributeValues: {
+            [key: string]: string;
         };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression?: undefined;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression?: undefined;
-        Key: {
-            [key: string]: any;
-        };
-        TableName: string;
-    } | {
         ExpressionAttributeValues: {
             [key: string]: string;
         };
-        ConditionExpression: string;
-        ExpressionAttributeNames: {
-            [key: string]: any;
-        };
-        ProjectionExpression: string;
-        Key?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression?: undefined;
+        ExpressionAttributeValues: {
+            [key: string]: string;
+        };
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression?: undefined;
+        ExpressionAttributeValues: {
+            [key: string]: string;
+        };
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression: string;
-        Key?: undefined;
-        TableName: string;
-    } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression: string;
-        Key?: undefined;
-        TableName: string;
-    } | {
         ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression: string;
-        Key?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames: {
+            [key: string]: any;
         };
-        ConditionExpression?: undefined;
-        ExpressionAttributeNames?: undefined;
         ProjectionExpression: string;
-        Key?: undefined;
-        TableName: string;
-    } | {
         ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression: string;
-        Key?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression: string;
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression: string;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression?: undefined;
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
         ExpressionAttributeNames: {
             [key: string]: any;
         };
         ProjectionExpression?: undefined;
-        Key?: undefined;
-        TableName: string;
-    } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression?: undefined;
-        Key?: undefined;
-        TableName: string;
-    } | {
         ExpressionAttributeValues?: undefined;
-        ConditionExpression: string;
-        ExpressionAttributeNames?: undefined;
-        ProjectionExpression?: undefined;
-        Key?: undefined;
         TableName: string;
     } | {
-        ExpressionAttributeValues: {
-            [key: string]: string;
-        };
-        ConditionExpression?: undefined;
+        Limit: number;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression?: undefined;
-        Key?: undefined;
-        TableName: string;
-    } | {
         ExpressionAttributeValues?: undefined;
-        ConditionExpression?: undefined;
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression: string;
         ExpressionAttributeNames?: undefined;
         ProjectionExpression?: undefined;
-        Key?: undefined;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit: number;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression?: undefined;
+        ExpressionAttributeValues?: undefined;
+        TableName: string;
+    } | {
+        Limit?: undefined;
+        IndexName: string;
+        FilterExpression?: undefined;
+        ExpressionAttributeNames?: undefined;
+        ProjectionExpression?: undefined;
+        ExpressionAttributeValues?: undefined;
         TableName: string;
     };
 }

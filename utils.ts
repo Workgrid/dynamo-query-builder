@@ -32,7 +32,7 @@ export const isEmpty = (object: object) => {
   return (Object.keys(object).length === 0)
 }
 
-/** Create a chainable function out of a void function */
+/** Create a chainable function from a void function */
 export const chainable = <T extends any[], U>(fn: (...args: T) => void, weeSomething: U) => {
   return (...args: T): U => {
     fn(...args)

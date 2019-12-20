@@ -1,4 +1,4 @@
-import QueryBuilder from '../';
+import QueryBuilder from '..';
 export default class extends QueryBuilder {
     /** Setters */
     addUpdateExpression: (type: import("../attributes/UpdateExpression").ExpressionType, keyName: string, value?: any) => this;

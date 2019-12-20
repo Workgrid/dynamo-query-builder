@@ -1,4 +1,4 @@
-import QueryBuilder from '../';
+import QueryBuilder from '..';
 export default class extends QueryBuilder {
     /** Expose public functions */
     setKeyCondition: (key: string, value: any) => this;

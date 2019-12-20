@@ -1,4 +1,4 @@
-import QueryBuilder from '../'
+import QueryBuilder from '..'
 import { chainable } from '../../utils'
 
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
