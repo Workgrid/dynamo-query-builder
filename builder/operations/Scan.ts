@@ -1,6 +1,7 @@
 import QueryBuilder from '..'
 import { chainable } from '../../utils'
 
+import ExclusiveStartKey from '../attributes/ExclusiveStartKey'
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
 import FilterExpression from '../attributes/FilterExpression'
@@ -17,6 +18,7 @@ const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionA
 const { get: getFilterExp, add: addFilterExp } = FilterExpression(expressionAttributeValues)
 const { get: getIndexName, set: setIndexName } = IndexName()
 const { get: getLimit, set: setLimit } = Limit()
+const { get: getStartKeys, set: setStartKeys } = ExclusiveStartKey()
 
 export default class extends QueryBuilder {
 
@@ -26,6 +28,7 @@ export default class extends QueryBuilder {
   public addAliasToKey = chainable(addAttrName, this)
   public setIndexName = chainable(setIndexName, this)
   public setLimit = chainable(setLimit, this)
+  public setExclusiveStartKey = chainable(setStartKeys, this)
 
   public generateAliasForKey = generateAliasForKey
 
@@ -39,7 +42,8 @@ export default class extends QueryBuilder {
       ...getAttrNames(),
       ...getFilterExp(),
       ...getIndexName(),
-      ...getLimit()
+      ...getLimit(),
+      ...getStartKeys()
     }
   }
 }
