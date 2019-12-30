@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc"
   },
+  "private": true,
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
