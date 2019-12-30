@@ -7,6 +7,6 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "./types"
+    "declarationDir": "./dist"
   }
 }

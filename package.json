@@ -1,12 +1,16 @@
 {
   "name": "@workgrid/dynamo-query-builder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": { "registry": "https://npm.pkg.github.com" },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepack": "yarn --dev && yarn run build"
   },
+  "files": [
+    "dist"
+  ],
   "private": true,
   "license": "MIT",
   "dependencies": {},
