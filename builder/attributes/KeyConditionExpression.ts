@@ -4,12 +4,16 @@ export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) =>
   const KeyConditionExpression: string[] = []
 
   return {
-    add(key: string, value: any, operator?: string) {
-      const op = operator || '='
-      const queryIndex = `:${KeyConditionExpression.length + 1}`
+    add(key: string, value?: any, operator?: string) {
+      if (value) {
+        const op = operator || '='
+        const queryIndex = `:${KeyConditionExpression.length + 1}`
 
-      KeyConditionExpression.push(`${key} ${op} ${queryIndex}`)
-      exprAttrValues.add(queryIndex, value)
+        KeyConditionExpression.push(`${key} ${op} ${queryIndex}`)
+        exprAttrValues.add(queryIndex, value)
+      } else {
+        KeyConditionExpression.push(key)
+      }
 
       return this
     },

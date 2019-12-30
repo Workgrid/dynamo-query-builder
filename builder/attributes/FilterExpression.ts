@@ -5,11 +5,15 @@ export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) =>
 
   return {
     add(key: string, value: any, operator?: string) {
-      const op = operator || '='
-      const filterIndex = `:${FilterExpression.length + 1}`
+      if (value) {
+        const op = operator || '='
+        const filterIndex = `:${FilterExpression.length + 1}`
 
-      FilterExpression.push(`${key} ${op} ${filterIndex}`)
-      exprAttrValues.add(filterIndex, value)
+        FilterExpression.push(`${key} ${op} ${filterIndex}`)
+        exprAttrValues.add(filterIndex, value)
+      } else {
+        FilterExpression.push(key)
+      }
 
       return this
     },
