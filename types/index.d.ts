@@ -10,4 +10,5 @@ export declare const ConstructPut: typeof Put;
 export declare const ConstructQuery: typeof Query;
 export declare const ConstructScan: typeof Scan;
 export declare const ConstructUpdate: typeof Update;
+export { getAllPages } from './utils';
 export { BuilderType } from './builder';

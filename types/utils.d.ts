@@ -7,3 +7,4 @@ export declare const getType: (variable: any) => "BOOL" | "S" | "N" | "B";
 export declare const isEmpty: (object: object) => boolean;
 /** Create a chainable function from a void function */
 export declare const chainable: <T extends any[], U>(fn: (...args: T) => void, weeSomething: U) => (...args: T) => U;
+export declare function getAllPages<T = {}>(func: (token?: string) => Promise<T>): Promise<T>;
