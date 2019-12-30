@@ -1,6 +1,6 @@
 {
   "name": "dynamo-query-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "publishConfig": { "registry": "https://registry.npmjs.org" },
   "scripts": {
