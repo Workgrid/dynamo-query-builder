@@ -1,8 +1,8 @@
 {
-  "name": "dynamo-query-builder",
-  "version": "1.0.2",
+  "name": "@workgrid/dynamo-query-builder",
+  "version": "1.0.3",
   "main": "./dist/index.js",
-  "publishConfig": { "registry": "https://registry.npmjs.org" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
   "scripts": {
     "build": "tsc"
   },
