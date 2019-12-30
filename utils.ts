@@ -39,3 +39,20 @@ export const chainable = <T extends any[], U>(fn: (...args: T) => void, weeSomet
     return weeSomething
   }
 }
+
+/** Wrapper function for dynamo operations to concat all results pages */
+interface IResultsType { nextToken?: string, [key: string]: any }
+export async function getAllPages<T = {}>(func: (token?: string) => Promise<T>): Promise<T> {
+  const fullResults: any = {}
+  let results: IResultsType = {}
+  do {
+    results = await func(results.nextToken)
+
+    if (fullResults.Items === undefined) {
+      fullResults.Items = results.Items
+    } else {
+      fullResults.Items = [...results.Items, ...fullResults.Items]
+    }
+  } while (results.nextToken !== null)
+  return fullResults
+}

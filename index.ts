@@ -12,4 +12,5 @@ export const ConstructQuery = Query
 export const ConstructScan = Scan
 export const ConstructUpdate = Update
 
+export { getAllPages } from './utils'
 export { BuilderType } from './builder'
