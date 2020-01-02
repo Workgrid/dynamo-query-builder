@@ -1,18 +1,13 @@
 import ExpressionAttributeValues from './ExpressionAttributeValues'
+import { Expression } from './ExpressionBuilder'
 
 export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
-  const ConditionExpression: string[] = []
-
+  const ConditionExpression: Expression[] = []
   return {
-    add: (key: string, value?: any, operator?: string) => {
-      if (value) {
-        const op = operator || '='
-        const queryIndex = `:${ConditionExpression.length + 1}`
-
-        ConditionExpression.push(`${key} ${op} ${queryIndex}`)
-        exprAttrValues.add(queryIndex, value)
-      } else {
-        ConditionExpression.push(key)
+    add: (expression: Expression) => {
+      ConditionExpression.push(expression)
+      for (const expr of expression.values) {
+        exprAttrValues.add(expr.alias, expr.value)
       }
 
       return this
@@ -20,7 +15,7 @@ export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) =>
     get: () => {
       if (ConditionExpression.length > 0) {
         return {
-          ConditionExpression: ConditionExpression.join(' and ')
+          ConditionExpression: ConditionExpression.map((expr) => expr.toString()).join(' AND ')
         }
       }
       return {}

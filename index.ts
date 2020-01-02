@@ -14,3 +14,5 @@ export const ConstructUpdate = Update
 
 export { getAllPages } from './utils'
 export { BuilderType } from './builder'
+export { Expression } from './builder/attributes/ExpressionBuilder'
+export { OperatorTypes } from './builder/attributes/ExpressionBuilder/interfaces/OperatorTypes'

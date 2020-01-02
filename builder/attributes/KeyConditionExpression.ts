@@ -1,18 +1,14 @@
 import ExpressionAttributeValues from './ExpressionAttributeValues'
+import { Expression } from './ExpressionBuilder'
 
 export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
-  const KeyConditionExpression: string[] = []
+  const KeyConditionExpression: Expression[] = []
 
   return {
-    add(key: string, value?: any, operator?: string) {
-      if (value) {
-        const op = operator || '='
-        const queryIndex = `:${KeyConditionExpression.length + 1}`
-
-        KeyConditionExpression.push(`${key} ${op} ${queryIndex}`)
-        exprAttrValues.add(queryIndex, value)
-      } else {
-        KeyConditionExpression.push(key)
+    add(expression: Expression) {
+      KeyConditionExpression.push(expression)
+      for (const expr of expression.values) {
+        exprAttrValues.add(expr.alias, expr.value)
       }
 
       return this
@@ -21,7 +17,7 @@ export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) =>
     get: () => {
       if (KeyConditionExpression.length > 0) {
         return {
-          KeyConditionExpression: KeyConditionExpression.join(' and ')
+          KeyConditionExpression: KeyConditionExpression.join(' AND ')
         }
       }
       return {}

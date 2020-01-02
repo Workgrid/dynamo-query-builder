@@ -2,7 +2,11 @@ export default () => {
   let IndexName: string
   return {
     get: () => {
-      return { IndexName }
+      if (IndexName) {
+        return { IndexName }
+      } else {
+        return {}
+      }
     },
     set: (indexName: string) => {
       IndexName = indexName

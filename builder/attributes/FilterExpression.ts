@@ -1,18 +1,14 @@
 import ExpressionAttributeValues from './ExpressionAttributeValues'
+import { Expression } from './ExpressionBuilder'
 
 export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
-  const FilterExpression: string[] = []
+  const FilterExpression: Expression[] = []
 
   return {
-    add(key: string, value: any, operator?: string) {
-      if (value) {
-        const op = operator || '='
-        const filterIndex = `:${FilterExpression.length + 1}`
-
-        FilterExpression.push(`${key} ${op} ${filterIndex}`)
-        exprAttrValues.add(filterIndex, value)
-      } else {
-        FilterExpression.push(key)
+    add(expression: Expression) {
+      FilterExpression.push(expression)
+      for (const expr of expression.values) {
+        exprAttrValues.add(expr.alias, expr.value)
       }
 
       return this
@@ -20,7 +16,7 @@ export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) =>
     get: () => {
       if (FilterExpression.length !== 0) {
         return {
-          FilterExpression: FilterExpression.join(' and ')
+          FilterExpression: FilterExpression.join(' AND ')
         }
       }
       return {}

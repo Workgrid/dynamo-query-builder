@@ -5,8 +5,14 @@ import { BuilderType } from './builder'
 export const formatValue = (builderType: BuilderType, value: any) => {
   switch (builderType) {
     case BuilderType.DynamoDB:
-      const type = getType(value)
-      return { [type]: value }
+      if (Array.isArray(value)) {
+        return {
+          L: value.map((val) => ({ [getType(val)]: val }))
+        }
+      } else {
+        const type = getType(value)
+        return { [type]: value }
+      }
     case BuilderType.DocumentClient: // DocumentClient is already good to go, fallthrough
     default:
       return value
