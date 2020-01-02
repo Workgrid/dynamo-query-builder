@@ -173,22 +173,3 @@ export class Expression {
     return (isSub) ? `(${stringifiedConditions})` : stringifiedConditions
   }
 }
-
-// console.log(
-//   new Expression().where('testKey', 'testVal').or(
-//     new Expression().whereBetween('subKey', 5, 6).or(
-//       new Expression().where('myKey', 'myVal')
-//         .where('test', 'test2'))
-//         .whereIn('keyCollection', ['wow', 'heres', 'keys'])
-//   ).where('anotherKey', OperatorTypes.GREATER_THAN, 'anotherVal').toString()
-// )
-
-/**
- * attribute_exists
- * attribute_not_exists
- * attribute_type
- * begins_with
- * size
- * contains
- */
-// }
