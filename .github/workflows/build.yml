@@ -1,0 +1,29 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: Setup
+      run: npm install --global yarn
+    - name: Install
+      run: yarn install --frozen-lockfile
+    - name: Build
+      run: yarn build
+    - name: '[NPM] Configure'
+      if: github.ref == 'refs/heads/master'
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+    - name: '[NPM] Publish'
+      if: github.ref == 'refs/heads/master'
+      run: yarn release
+      env:
+        YARN_REGISTRY: https://registry.npmjs.org/
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # Yarn doesn't seem to respect this
