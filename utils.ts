@@ -47,8 +47,8 @@ export const chainable = <T extends any[], U>(fn: (...args: T) => void, weeSomet
 }
 
 /** Wrapper function for dynamo operations to concat all results pages */
-interface IResultsType { LastEvaluatedKey?: string, [key: string]: any }
-export async function getAllPages<T = {}>(func: (token?: string) => Promise<T>): Promise<T> {
+interface IResultsType { LastEvaluatedKey?: object, [key: string]: any }
+export async function getAllPages<T = {}>(func: (lastEvaluatedKey?: object) => Promise<T>): Promise<T> {
   const fullResults: any = {}
   let results: IResultsType = {}
   do {
