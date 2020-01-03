@@ -1,9 +1,11 @@
 {
   "name": "@workgrid/dynamo-query-builder",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn run clean && tsc",
