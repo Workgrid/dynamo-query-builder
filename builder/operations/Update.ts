@@ -4,11 +4,13 @@ import { chainable } from '../../utils'
 import ConditionExpression from '../attributes/ConditionExpression'
 import ExpressionAttributeNames from '../attributes/ExpressionAttributeNames'
 import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
+import Key from '../attributes/Key'
 import UpdateExpression from '../attributes/UpdateExpression'
 
 const expressionAttributeValues = ExpressionAttributeValues()
 const { get: getAttrValues } = expressionAttributeValues
 
+const { get: getKey, set: setKey } = Key()
 const { get: getUpdateExp, add: addUpdateExpression } = UpdateExpression(expressionAttributeValues)
 const { get: getConditionExp, add: addConditionExp } = ConditionExpression(expressionAttributeValues)
 const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
@@ -16,6 +18,7 @@ const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionA
 export default class extends QueryBuilder {
 
   /** Setters */
+  public setKeyCondition = chainable(setKey, this)
   public addUpdateExpression = chainable(addUpdateExpression, this)
   public addConditionExpression = chainable(addConditionExp, this)
   public addAliasToKey = chainable(addAttrName, this)
@@ -30,7 +33,8 @@ export default class extends QueryBuilder {
       ...getUpdateExp(),
       ...getAttrValues(),
       ...getConditionExp(),
-      ...getAttrNames()
+      ...getAttrNames(),
+      ...getKey()
     }
   }
 }
