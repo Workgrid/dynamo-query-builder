@@ -12,7 +12,7 @@
   "files": [
     "dist"
   ],
-  "private": true,
+  "private": false,
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

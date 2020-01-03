@@ -23,7 +23,7 @@ jobs:
       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH }}" > ~/.npmrc
     - name: '[NPM] Publish'
       if: github.ref == 'refs/heads/master'
-      run: yarn release
+      run: yarn publish
       env:
         YARN_REGISTRY: https://registry.npmjs.org/
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH }} # Yarn doesn't seem to respect this
