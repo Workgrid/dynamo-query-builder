@@ -36,12 +36,7 @@ export class Expression {
    * @param {any | undefined} param2 - Value of key
    */
   public where(key: string, param1: OperatorTypes | any, param2?: any | undefined) {
-    if (this.conditions.length > 0) {
-      if (this.conditions[this.conditions.length - 1].type !== ConditionTypes.JOINER) {
-        this.and()
-      }
-    }
-
+    if (shouldAddJoiner) { this.and() }
     if (param2 === undefined) { // Has not supplied operator, default to equals
 
       const valueAlias = generateAlias()
@@ -64,11 +59,7 @@ export class Expression {
     return this
   }
   public whereBetween(key: string, firstValue: number, secondValue: number) {
-    if (this.conditions.length > 0) {
-      if (this.conditions[this.conditions.length - 1].type !== ConditionTypes.JOINER) {
-        this.and()
-      }
-    }
+    if (shouldAddJoiner) { this.and() }
 
     const firstValueAlias = generateAlias()
     this.values.push({ value: firstValue, alias: firstValueAlias })
@@ -88,6 +79,8 @@ export class Expression {
     return this
   }
   public whereIn(key: string, values: Array<string | number>) {
+    if (shouldAddJoiner) { this.and() }
+
     if (this.conditions.length > 0) {
       if (this.conditions[this.conditions.length - 1].type !== ConditionTypes.JOINER) {
         this.and()
@@ -111,6 +104,8 @@ export class Expression {
     return this
   }
   public attributeExists(key: string) {
+    if (shouldAddJoiner) { this.and() }
+
     this.conditions.push({
       type: ConditionTypes.RAW,
       condition: `attribute_exists(${key})`
@@ -118,6 +113,8 @@ export class Expression {
     return this
   }
   public attributeNotExists(key: string) {
+    if (shouldAddJoiner) { this.and() }
+
     this.conditions.push({
       type: ConditionTypes.RAW,
       condition: `attribute_not_exists(${key})`
@@ -125,6 +122,8 @@ export class Expression {
     return this
   }
   public attributeType(key: string, type: AttributeTypes) {
+    if (shouldAddJoiner) { this.and() }
+
     // For some reason, these attributes need their own alias
     const valueAlias = generateAlias()
     this.values.push({ value: type, alias: valueAlias })
@@ -136,6 +135,8 @@ export class Expression {
     return this
   }
   public beginsWith(key: string, beginStr: string) {
+    if (shouldAddJoiner) { this.and() }
+
     const valueAlias = generateAlias()
     this.values.push({ value: beginStr, alias: valueAlias })
 
@@ -146,6 +147,8 @@ export class Expression {
     return this
   }
   public contains(key: string, valueSet: Array<string | number>) {
+    if (shouldAddJoiner) { this.and() }
+
     const valueAlias = generateAlias()
     this.values.push({ value: valueSet, alias: valueAlias })
 
@@ -172,4 +175,14 @@ export class Expression {
     }).join(' ')
     return (isSub) ? `(${stringifiedConditions})` : stringifiedConditions
   }
+}
+
+// Keeping this outside to keep private as TS private/public is only honoured prior to compilation
+const shouldAddJoiner = (conditions: IExpression[]) => {
+  if (conditions.length > 0) {
+    if (conditions[conditions.length - 1].type !== ConditionTypes.JOINER) {
+      return true
+    }
+  }
+  return false
 }
