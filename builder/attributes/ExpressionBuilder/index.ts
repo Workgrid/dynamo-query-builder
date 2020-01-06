@@ -36,7 +36,7 @@ export class Expression {
    * @param {any | undefined} param2 - Value of key
    */
   public where(key: string, param1: OperatorTypes | any, param2?: any | undefined) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
     if (param2 === undefined) { // Has not supplied operator, default to equals
 
       const valueAlias = generateAlias()
@@ -59,7 +59,7 @@ export class Expression {
     return this
   }
   public whereBetween(key: string, firstValue: number, secondValue: number) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     const firstValueAlias = generateAlias()
     this.values.push({ value: firstValue, alias: firstValueAlias })
@@ -79,7 +79,7 @@ export class Expression {
     return this
   }
   public whereIn(key: string, values: Array<string | number>) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     if (this.conditions.length > 0) {
       if (this.conditions[this.conditions.length - 1].type !== ConditionTypes.JOINER) {
@@ -104,7 +104,7 @@ export class Expression {
     return this
   }
   public attributeExists(key: string) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     this.conditions.push({
       type: ConditionTypes.RAW,
@@ -113,7 +113,7 @@ export class Expression {
     return this
   }
   public attributeNotExists(key: string) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     this.conditions.push({
       type: ConditionTypes.RAW,
@@ -122,7 +122,7 @@ export class Expression {
     return this
   }
   public attributeType(key: string, type: AttributeTypes) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     // For some reason, these attributes need their own alias
     const valueAlias = generateAlias()
@@ -135,7 +135,7 @@ export class Expression {
     return this
   }
   public beginsWith(key: string, beginStr: string) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     const valueAlias = generateAlias()
     this.values.push({ value: beginStr, alias: valueAlias })
@@ -147,7 +147,7 @@ export class Expression {
     return this
   }
   public contains(key: string, valueSet: Array<string | number>) {
-    if (shouldAddJoiner) { this.and() }
+    if (shouldAddJoiner(this.conditions)) { this.and() }
 
     const valueAlias = generateAlias()
     this.values.push({ value: valueSet, alias: valueAlias })
