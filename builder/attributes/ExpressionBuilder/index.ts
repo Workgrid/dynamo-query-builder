@@ -83,15 +83,18 @@ export class Expression {
   public whereIn(key: string, values: Array<string | number>) {
     if (shouldAddJoiner(this.conditions)) { this.and() }
 
-    const valueAlias = generateAlias()
-    this.values.push({ value: values, alias: valueAlias })
+    const aliases = values.map((value) => {
+      const valueAlias = generateAlias()
+      this.values.push({ value, alias: valueAlias })
+      return valueAlias
+    })
 
     this.conditions.push({
       type: ConditionTypes.WHERE_IN,
       condition: {
         keyName: key,
         operatorType: OperatorTypes.IN,
-        value: valueAlias
+        value: `(${aliases.join(', ')})`
       }
     })
     return this
