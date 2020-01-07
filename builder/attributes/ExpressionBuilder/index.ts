@@ -91,7 +91,7 @@ export class Expression {
       condition: {
         keyName: key,
         operatorType: OperatorTypes.IN,
-        value: `(${valueAlias})`
+        value: valueAlias
       }
     })
     return this
