@@ -17,6 +17,7 @@ export class Expression {
   public and(subQuery?: Expression) {
     this.conditions.push({ type: ConditionTypes.JOINER, condition: JoinerTypes.AND })
     if (subQuery) {
+      if (subQuery.values.length > 0) { this.values.push(...subQuery.values) }
       this.conditions.push({ type: ConditionTypes.RAW, condition: subQuery.toString(true) })
     }
     return this
@@ -25,6 +26,7 @@ export class Expression {
   public or(subQuery?: Expression) {
     this.conditions.push({ type: ConditionTypes.JOINER, condition: JoinerTypes.OR })
     if (subQuery) {
+      if (subQuery.values.length > 0) { this.values.push(...subQuery.values) }
       this.conditions.push({ type: ConditionTypes.RAW, condition: subQuery.toString(true) })
     }
     return this
