@@ -9,41 +9,39 @@ import IndexName from '../attributes/IndexName'
 import KeyConditionExpression from '../attributes/KeyConditionExpression'
 import ProjectionExpression from '../attributes/ProjectionExpression'
 
-/** Attribute modules */
-const expressionAttributeValues = ExpressionAttributeValues()
-const { get: getAttrValues } = expressionAttributeValues
-
-const { get: getProjection, add: addProjection } = ProjectionExpression()
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
-const { get: getKeyCondition, add: addKeyCondition } = KeyConditionExpression(expressionAttributeValues)
-const { get: getIndexName, set: setIndexName } = IndexName()
-const { get: getFilterExp, add: addFilterExp } = FilterExpression(expressionAttributeValues)
-const { get: getStartKeys, set: setStartKeys } = ExclusiveStartKey()
-
 export default class extends QueryBuilder {
 
-  /** Setters */
-  public addKeyCondition = chainable(addKeyCondition, this)
-  public addKeyProjection = chainable(addProjection, this)
-  public addFilterExpression = chainable(addFilterExp, this)
-  public setIndexName = chainable(setIndexName, this)
-  public addAliasToKey = chainable(addAttrName, this)
-  public setExclusiveStartKey = chainable(setStartKeys, this)
+  // Typescript privates only honoured prior to compilation, using tsconfig `stripInternal` as workaround
+  /** @internal */ private ExpressionAttributeValues = ExpressionAttributeValues()
+  /** @internal */ private ProjectionExpression = ProjectionExpression()
+  /** @internal */ private ExpressionAttributeNames = ExpressionAttributeNames()
+  /** @internal */ private KeyConditionExpression = KeyConditionExpression(this.ExpressionAttributeValues)
+  /** @internal */ private IndexName = IndexName()
+  /** @internal */ private FilterExpression = FilterExpression(this.ExpressionAttributeValues)
+  /** @internal */ private ExclusiveStartKey = ExclusiveStartKey()
 
-  public generateAliasForKey = generateAliasForKey
+  // Setters
+  public addKeyCondition = chainable(this.KeyConditionExpression.add, this)
+  public addKeyProjection = chainable(this.ProjectionExpression.add, this)
+  public addFilterExpression = chainable(this.FilterExpression.add, this)
+  public setIndexName = chainable(this.IndexName.set, this)
+  public addAliasToKey = chainable(this.ExpressionAttributeNames.add, this)
+  public setExclusiveStartKey = chainable(this.ExclusiveStartKey.set, this)
+
+  public generateAliasForKey = this.ExpressionAttributeNames.generateAliasForKey
 
   public getConstructedQuery() {
     const query = super.getConstructedQuery()
 
     return {
       ...query,
-      ...getAttrValues(),
-      ...getProjection(),
-      ...getAttrNames(),
-      ...getKeyCondition(),
-      ...getFilterExp(),
-      ...getStartKeys(),
-      ...getIndexName()
+      ...this.ExpressionAttributeValues.get(),
+      ...this.ProjectionExpression.get(),
+      ...this.ExpressionAttributeNames.get(),
+      ...this.KeyConditionExpression.get(),
+      ...this.FilterExpression.get(),
+      ...this.ExclusiveStartKey.get(),
+      ...this.IndexName.get()
     }
   }
 }

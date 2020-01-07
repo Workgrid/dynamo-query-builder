@@ -7,34 +7,33 @@ import ExpressionAttributeValues from '../attributes/ExpressionAttributeValues'
 import Key from '../attributes/Key'
 import UpdateExpression from '../attributes/UpdateExpression'
 
-const expressionAttributeValues = ExpressionAttributeValues()
-const { get: getAttrValues } = expressionAttributeValues
-
-const { get: getKey, set: setKey } = Key()
-const { get: getUpdateExp, add: addUpdateExpression } = UpdateExpression(expressionAttributeValues)
-const { get: getConditionExp, add: addConditionExp } = ConditionExpression(expressionAttributeValues)
-const { get: getAttrNames, add: addAttrName, generateAliasForKey } = ExpressionAttributeNames()
-
 export default class extends QueryBuilder {
 
-  /** Setters */
-  public setKeyCondition = chainable(setKey, this)
-  public addUpdateExpression = chainable(addUpdateExpression, this)
-  public addConditionExpression = chainable(addConditionExp, this)
-  public addAliasToKey = chainable(addAttrName, this)
+  // Typescript privates only honoured prior to compilation, using tsconfig `stripInternal` as workaround
+  /** @internal */ private ExpressionAttributeValues = ExpressionAttributeValues()
+  /** @internal */ private Key = Key()
+  /** @internal */ private UpdateExpression = UpdateExpression(this.ExpressionAttributeValues)
+  /** @internal */ private ConditionExpression = ConditionExpression(this.ExpressionAttributeValues)
+  /** @internal */ private ExpressionAttributeNames = ExpressionAttributeNames()
 
-  public generateAliasForKey = generateAliasForKey
+  /** Setters */
+  public setKeyCondition = chainable(this.Key.set, this)
+  public addUpdateExpression = chainable(this.UpdateExpression.add, this)
+  public addConditionExpression = chainable(this.ConditionExpression.add, this)
+  public addAliasToKey = chainable(this.ExpressionAttributeNames.add, this)
+
+  public generateAliasForKey = this.ExpressionAttributeNames.generateAliasForKey
 
   public getConstructedQuery() {
     const query = super.getConstructedQuery()
 
     return {
       ...query,
-      ...getUpdateExp(),
-      ...getAttrValues(),
-      ...getConditionExp(),
-      ...getAttrNames(),
-      ...getKey()
+      ...this.UpdateExpression.get(),
+      ...this.ExpressionAttributeValues.get(),
+      ...this.ConditionExpression.get(),
+      ...this.ExpressionAttributeNames.get(),
+      ...this.Key.get()
     }
   }
 }
