@@ -7,6 +7,22 @@ An abstraction layer for the AWS SDK DynamoDB to construct query parameters for 
 
 ## Supported Dynamo operations
 
+| Operation | Supported? |
+|-|:-:|
+| Get | ✓ |
+| Query | ✓ |
+| Delete | ✓ |
+| Scan | ✓ |
+| Update | ✓ |
+| Put | ✓ |
+| Batch Get | x |
+| Batch Write | x |
+| Create Set | x |
+| Transact Get | x |
+| Transact Write | x |
+
+## Supported Dynamo attributes
+
 | Attributes     | Supported? |
 |-|:-:|
 | `Key` | ✓ |
@@ -19,15 +35,15 @@ An abstraction layer for the AWS SDK DynamoDB to construct query parameters for 
 | `Item` | ✓ |
 | `ProjectionExpression` | ✓ |
 | `UpdateExpression` | ✓ |
+| `ConditionExpression` | ✓ |
+| `ExclusiveStartKey` | ✓ |
 | `ReturnConsumedCapacity` | x |
 | `ReturnItemCollectionMetrics` | x |
 | `ReturnValues` | x |
 | `ConsistentRead` | x |
-| `ExclusiveStartKey` | x |
 | `KeyConditions` | x |
 | `ScanIndexForward` | x |
 | `Select` | x |
-| `ConditionExpression` | x |
 | `Segment` | x |
 | `TotalSegments` | x |
 | ~~`ConditionalOperator`~~ - [Legacy](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html) | ~ |
@@ -55,11 +71,9 @@ For example, the **Get** operation pulls in the following attributes;
 
 This class exposes the **set** attribute functions using *public* access type, while keeping the **get** ones private by keeping them outside of the class entirely.
 
-> **Why keep private functions outside the class?**
->
->*This is due to Javascript ignoring Typescript related keywords, so the only way to keep class members private, is by not having them in the class at all.*
-
 The **get** attributes are kept private, as they are only exposed and returned all together via the **getConstructedQuery** function.
+
+> Since the `private` and `public` keywords are only honoured in Typescript prior to compilation; when using in a Javascript project, private methods and attributes are visibly and accessable. In order to hide clutter, `internal` tags are used as a workaround for each `private` attribute.
 
 Typically (But up to you), attribute **set** functions are chainable. Chainable function can be setup using the **chainable** utility, so that any attribute can be converted to this style, where it sees fit.
 
