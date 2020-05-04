@@ -2,7 +2,7 @@ import ExpressionAttributeValues from './ExpressionAttributeValues'
 
 export type ExpressionType = 'ADD' | 'DELETE' | 'REMOVE' | 'SET'
 
-interface ITransaction { keyName: string, value?: any }
+interface ITransaction { keyName: string; value?: any }
 
 export default (exprAttrValues: ReturnType<typeof ExpressionAttributeValues>) => {
 

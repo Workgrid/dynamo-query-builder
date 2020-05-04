@@ -10,18 +10,18 @@ export enum ConditionTypes {
 }
 
 export interface IExpression {
-  type: ConditionTypes,
-  condition: ICondition | string
+  type: ConditionTypes;
+  condition: ICondition | string;
 }
 
 export interface IValue {
-  value: string | number | boolean | Array<string| number>,
-  alias: string
+  value: string | number | boolean | Array<string| number>;
+  alias: string;
 }
 
 export interface ICondition {
-  keyName: string,
-  value?: string | number | boolean,
-  secondValue?: string | number | boolean,
-  operatorType?: OperatorTypes
+  keyName: string;
+  value?: string | number | boolean;
+  secondValue?: string | number | boolean;
+  operatorType?: OperatorTypes;
 }

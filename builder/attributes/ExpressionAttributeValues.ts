@@ -2,8 +2,8 @@ import { getBuilderType } from '..'
 import { formatValue } from '../../utils'
 
 interface IAttributeValue {
-  keyName: string,
-  value: any
+  keyName: string;
+  value: any;
 }
 
 export default () => {

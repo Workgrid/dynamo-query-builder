@@ -2,7 +2,7 @@ import { getBuilderType } from '../'
 import { formatValue } from '../../utils'
 
 export interface IJsonItem {
-  [key: string]: any
+  [key: string]: any;
 }
 
 export default () => {

@@ -2,7 +2,7 @@ import { getBuilderType } from '..'
 import { formatValue, isEmpty } from '../../utils'
 
 export interface IStartKey {
-  [key: string]: any
+  [key: string]: any;
 }
 
 export default () => {

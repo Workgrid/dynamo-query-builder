@@ -10,6 +10,16 @@ const generateAlias = () => {
   return `:val${atomicIndex}`
 }
 
+// Keeping this outside to keep private as TS private/public is only honoured prior to compilation
+const shouldAddJoiner = (conditions: IExpression[]) => {
+  if (conditions.length > 0) {
+    if (conditions[conditions.length - 1].type !== ConditionTypes.JOINER) {
+      return true
+    }
+  }
+  return false
+}
+
 export class Expression {
   public values: IValue[] = []
   private conditions: IExpression[] = []
@@ -156,13 +166,15 @@ export class Expression {
   }
   public toString(isSub?: boolean) {
     const stringifiedConditions = this.conditions.map((condition) => {
+      let whereExpr: ICondition
+      let value: string | number | boolean
       switch (condition.type) {
         case ConditionTypes.WHERE:
         case ConditionTypes.WHERE_IN:
         case ConditionTypes.WHERE_BETWEEN:
-          const whereExpr = condition.condition as ICondition
+          whereExpr = condition.condition as ICondition
 
-          const value = (whereExpr.secondValue) ? `${whereExpr.value} AND ${whereExpr.secondValue}` : whereExpr.value
+          value = (whereExpr.secondValue) ? `${whereExpr.value} AND ${whereExpr.secondValue}` : whereExpr.value
           return `${whereExpr.keyName} ${whereExpr.operatorType} ${value}`
         case ConditionTypes.RAW:
         case ConditionTypes.JOINER:
@@ -171,14 +183,4 @@ export class Expression {
     }).join(' ')
     return (isSub) ? `(${stringifiedConditions})` : stringifiedConditions
   }
-}
-
-// Keeping this outside to keep private as TS private/public is only honoured prior to compilation
-const shouldAddJoiner = (conditions: IExpression[]) => {
-  if (conditions.length > 0) {
-    if (conditions[conditions.length - 1].type !== ConditionTypes.JOINER) {
-      return true
-    }
-  }
-  return false
 }

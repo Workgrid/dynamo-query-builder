@@ -1,5 +1,19 @@
 import { BuilderType } from './builder'
 
+/** Map a variable to an AWS type */
+export const getType = (variable: any) => {
+  const variableType = typeof variable
+  switch (variableType) {
+    case 'boolean': return 'BOOL'
+    case 'string': return 'S'
+    case 'number': return 'N'
+    case 'object': // Special cases
+      if (Buffer.isBuffer(variable)) { return 'B' }
+    // If none of the above, fallthrough to string
+    default: return 'S'
+  }
+}
+
 // Might want to separate this out to 'formatters' file in future
 /** Format a value that is valid for query builder type */
 export const formatValue = (builderType: BuilderType, value: any) => {
@@ -19,20 +33,6 @@ export const formatValue = (builderType: BuilderType, value: any) => {
   }
 }
 
-/** Map a variable to an AWS type */
-export const getType = (variable: any) => {
-  const variableType = typeof variable
-  switch (variableType) {
-    case 'boolean': return 'BOOL'
-    case 'string': return 'S'
-    case 'number': return 'N'
-    case 'object': // Special cases
-      if (Buffer.isBuffer(variable)) { return 'B' }
-    // If none of the above, fallthrough to string
-    default: return 'S'
-  }
-}
-
 /** Simple way to check if the object is empty */
 export const isEmpty = (object: object) => {
   return (Object.keys(object).length === 0)
@@ -47,7 +47,7 @@ export const chainable = <T extends any[], U>(fn: (...args: T) => void, weeSomet
 }
 
 /** Wrapper function for dynamo operations to concat all results pages */
-interface IResultsType { LastEvaluatedKey?: object, [key: string]: any }
+interface IResultsType { LastEvaluatedKey?: object; [key: string]: any }
 export async function getAllPages<T = {}>(func: (lastEvaluatedKey?: object) => Promise<T>): Promise<T> {
   const fullResults: any = {}
   let results: IResultsType = {}
