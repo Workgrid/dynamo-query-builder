@@ -27,12 +27,14 @@ jobs:
       env:
         YARN_REGISTRY: https://registry.npmjs.org/
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH }} # Yarn doesn't seem to respect this
+      continue-on-error: true
     - name: '[GPR] Configure'
       if: github.ref == 'refs/heads/master'
       run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
     - name: '[GPR] Publish'
       if: github.ref == 'refs/heads/master'
-      run: yarn release
+      run: yarn publish --access public
       env:
         YARN_REGISTRY: https://npm.pkg.github.com/
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Yarn doesn't seem to respect this
+      continue-on-error: true
